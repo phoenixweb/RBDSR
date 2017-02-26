@@ -21,31 +21,31 @@ This plugin uses **rbd**, **rbd-nbd** add **rbd-fuse** utilities for manipulatin
 
 ## Configure Ceph Clients to access the cluster
 
-1. If you decide to run RBD using the kernel drive you'll need to downgrade the feature of your Ceph Cluster to your kernels support:
-if you'll use ceph rbd-nbd, you can use the optimized features:
+1. Create ```/etc/ceph/ceph.conf``` accordingly you Ceph cluster.
+The easiest way is just copy it from your Ceph cluster node.
+
+		 scp ceph.conf root@[ xenserver_host ]:/etc/ceph/ceph.conf
+
+2. Copy the user's keyring to XenServer hosts from your Ceph cluster node.
+The easiest way is just copy the client.admin keyring ```/etc/ceph/ceph.client.admin.keyring``` (not safe!).
+
+		 scp ceph.client.admin.keyring root@[ xenserver_host ]:/etc/ceph/
+
+3. If you decide to run RBD using the kernel drive you'll need to downgrade the feature of your Ceph Cluster to your kernels support.
+if you'll use ceph ```rbd-nbd```, you can use the optimized features:
 
 		 ceph osd crush tunables optimized
 
-if you are running XEN 6.5 and want to use the kernel rbd:
+if you are running XEN 6.5 and want to use the kernel ```rbd```:
 
 		 ceph osd crush tunables legacy
 
-if you are running XEN 7.0 and want to use the kernel rbd:
+if you are running XEN 7.0 and want to use the kernel ```rbd```:
 
 		 ceph osd crush tunables bobtail
 
 more info about CRUSH TUNABLES here:
 https://access.redhat.com/documentation/en-us/red_hat_ceph_storage/1.2.3/html/storage_strategies/crush_tunables
-
-2. Create ```/etc/ceph/ceph.conf``` accordingly you Ceph cluster.
-The easiest way is just copy it from your Ceph cluster node.
-
-		 scp ceph.conf root@[ xenserver_host ]:/etc/ceph/ceph.conf
-
-3. Copy the user's keyring to XenServer hosts from your Ceph cluster node.
-The easiest way is just copy the client.admin keyring ```/etc/ceph/ceph.client.admin.keyring``` (not safe!).
-
-		 scp ceph.client.admin.keyring root@[ xenserver_host ]:/etc/ceph/
 
 
 ## Usage
