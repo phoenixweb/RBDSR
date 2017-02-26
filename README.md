@@ -17,7 +17,7 @@ This plugin uses **rbd**, **rbd-nbd** add **rbd-fuse** utilities for manipulatin
 
 2. Restart XAPI tool-stack on XenServer hosts
 
-		# xe-toolstack-restart 
+		# xe-toolstack-restart
 
 ## Configure Ceph Clients to access the cluster
 
