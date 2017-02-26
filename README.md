@@ -35,11 +35,9 @@ The easiest way is just copy the client.admin keyring ```/etc/ceph/ceph.client.a
 if you'll use ceph ```rbd-nbd```, you can use the optimized features:
 
 		 ceph osd crush tunables optimized
-
 if you are running XEN 6.5 and want to use the kernel ```rbd```:
 
 		 ceph osd crush tunables legacy
-
 if you are running XEN 7.0 and want to use the kernel ```rbd```:
 
 		 ceph osd crush tunables bobtail
