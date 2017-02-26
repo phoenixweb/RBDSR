@@ -16,16 +16,17 @@ sed -ie '/\[base\]/,/^\[/s/enabled=0/enabled=1/' /etc/yum.repos.d/CentOS-Base.re
 sed -ie '/\[updates\]/,/^\[/s/enabled=0/enabled=1/' /etc/yum.repos.d/CentOS-Base.repo
 sed -ie '/\[extras\]/,/^\[/s/enabled=0/enabled=1/' /etc/yum.repos.d/CentOS-Base.repo
 
-echo "Install Required Packages"
+echo "Install Epel repo and enable it"
 yum install -y epel-release
 yum install -y yum-plugin-priorities.noarch
-
 sed -ie 's/enabled=0/enabled=1/g' /etc/yum.repos.d/epel.repo
+
+echo "Install Required Packages"
 yum install -y snappy leveldb gdisk python-argparse gperftools-libs
 yum install -y fuse fuse-libs
 yum install ceph-common rbd-fuse rbd-nbd
 
-echo "Disable Repos"
+echo "Disable all Repos"
 sed -ie 's/enabled=1/enabled=0/g' /etc/yum.repos.d/CentOS-Base.repo
 sed -ie 's/enabled=1/enabled=0/g' /etc/yum.repos.d/epel.repo
 
