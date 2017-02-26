@@ -13,7 +13,7 @@ This plugin uses **rbd**, **rbd-nbd** add **rbd-fuse** utilities for manipulatin
 
 1. Run this command to install Ceph on your XenServers:
 
-		# sh <(curl -s https://github.com/phoenixweb/RBDSR/raw/master/netinstall.sh)
+		# sh <(curl -sL https://github.com/phoenixweb/RBDSR/raw/master/netinstall.sh)
 
 2. Restart XAPI tool-stack on XenServer hosts
 
